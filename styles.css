@@ -1,0 +1,14 @@
+
+#matrix {
+    width: 100%;
+    padding: 0.5em auto;
+    margin-bottom: 1rem;
+}
+main {
+    padding: auto;
+    margin: 1rem auto;
+}
+footer {
+    min-height: 10vh;
+    padding-top: 1rem;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>The Matrix</title>
+		    
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+
+	<body style="background-color:rgb(41, 41, 41);">
+    <header>
+      <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+  
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#home" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="#projects" class="nav-link px-2 text-white">Projects</a></li>
+          <li><a href="#about" class="nav-link px-2 text-white">About</a></li>
+          <li><a href="#contact" class="nav-link px-2 text-white">Contact</a></li>
+          <li><a href="#admin" class="nav-link px-2 text-white">Admin</a></li>
+        </ul>
+  
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search...">
+        </form>
+  
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <button type="button" class="btn btn-warning">Sign-up</button>
+        </div>
+      </div>
+    </div>
+  </header>
+    <main>
+      <div class="container text-white">
+        <div class="row gx-2 border-2">
+          <div class="matrix top d-flex justify-content-center border">
+            <canvas id="hacker" width="100%">Mike King</canvas>
+          </div>
+          <p class="mx-5 py-5">It's dark down here...</p>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div>
+      <div class="bg-info text-dark text-center">
+        <p>Copyright 2021 Nynlabs.com</p>
+      </div>
+    </div>
+  </footer>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+	</body>
+  
+</html>
+<script type="text/javascript">
+	window.onload = function() {
+		var hacker = document.getElementById("hacker");
+		var width = hacker.width = screen.width * .8;
+		// var height = hacker.height = screen.height * 0.4;
+		// var height = hacker.height = screen.height * 0.963;
+		var height = hacker.height = window.screen.availHeight;
+		var ctx = hacker.getContext('2d');
+		var num = Math.ceil(width / 10);
+		var y = Array(num).join(0).split('');
+		var draw = function() {
+			ctx.fillStyle = 'rgba(0,0,0,.05)';
+			ctx.fillRect(0, 0, width, height);
+			ctx.fillStyle = '#0f0';
+			ctx.font = '10px Microsoft YaHei';
+			for(i = 0; i < num; i++) {
+				var x = (i * 10) + 10;
+				text = String.fromCharCode(65 + Math.random() * 62);
+				// console.log(text);
+				
+				var y1 = y[i];
+				ctx.fillText(text, x, y1);
+				if(y1 > Math.random() * 10 * height) {
+					y[i] = 0;
+				} else {
+					y[i] = parseInt(y[i]) + 10;
+				}
+			}
+		}
+
+		Run();
+
+		function Run() {
+			Game_Interval = setInterval(draw, 30);
+		}
+	}
+</script>
